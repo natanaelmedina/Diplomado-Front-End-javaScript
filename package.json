@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "babel": "babel --presets es2015 ./public/js/build-index.js -o ./public/js//main.bundle.js",
-    "start": "./Api/server.js localhost 9095"
+    "start": "node ./Api/server.js"
   },
   "author": "natanael medina",
   "license": "ISC",
