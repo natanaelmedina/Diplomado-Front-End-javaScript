@@ -1,6 +1,6 @@
 var Path = require('path');
 
-/*temp code for commpile file  */
+/*temp code for commpile file  
 const runAll = require("npm-run-all");
 
 runAll(["build","babel"], { parallel: false })
@@ -24,7 +24,7 @@ compileSass.compileSassAndSaveMultiple({
 		console.log(err);
 	});
 
-
+*/
 const Hapi = require('hapi');
 const server = new Hapi.Server();
 const Good = require('good');
