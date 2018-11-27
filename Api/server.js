@@ -38,7 +38,7 @@ const pool = new sql.ConnectionPool(config).connect();
 /**
  * Lets the server run on this Host and Port
  */
-server.connection({ host: '127.0.0.1', port: 9095 });
+server.connection({ host: '127.0.0.1', port: process.env.PORT || 3000 });
 
 
 /**
