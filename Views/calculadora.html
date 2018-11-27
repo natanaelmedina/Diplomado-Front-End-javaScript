@@ -1,0 +1,31 @@
+<div class="ui container calc">
+    <form>
+        <div id='sample' class="ui form">
+
+            <div class="field">
+                <label for="">Number one</label>
+                <input type="number">
+            </div>
+            <div class="field">
+                <label for="">number Two</label>
+                <input type="number">
+            </div>
+            <div class="field">
+                <label for="">Result</label>
+                <input type="number" readonly>
+            </div>
+
+            <button type="submit" class="ui button teal">Sumar</button>
+    </form>
+</div>
+
+<script>
+
+$('.calc button').on('click', (e) => {
+    e.preventDefault();
+    var lsit = $('.calc input');
+    lsit.get(2).value = parseFloat(lsit.get(0).value) + parseFloat(lsit.get(1).value);
+});
+
+
+</script>

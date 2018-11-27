@@ -1,0 +1,17 @@
+{
+    "igonore": [
+      "*.style.css",
+      "*.build-index.js",
+      "*.main.bundle.js",
+      "node_modules/**/node_modules"],
+    "watch": [
+      "api/*",
+      "Views/*",
+      "modules/*",
+      "server.js",
+      "public/js/utils.mjs",
+      "public/js/index.js",
+      "public/js/helpers.js",
+      "public/sass/style.scss"
+    ]
+  }

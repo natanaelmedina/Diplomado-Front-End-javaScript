@@ -1,0 +1,21 @@
+<div class="ui container">
+    <div class="ui column centered  grid  events">
+        <div class="sixteen wide mobile six wide tablet column column  four wide computer column red"></div>
+        <div class="sixteen wide mobile six wide tablet column column  four wide computer column orange"> </div>
+        <div class="sixteen wide mobile six wide tablet column column  four wide computer column yellow"> </div>
+        <div class="sixteen wide mobile six wide tablet column column  four wide computer column olive"> </div>
+        <div class="sixteen wide mobile six wide tablet column column  four wide computer column teal"> </div>
+        <div class="sixteen wide mobile six wide tablet column column  four wide computer column pink"> </div>
+    </div>
+</div>
+<script>
+['click','dblclick','touchstart','touchend','mouseenter','mousemove'].forEach((e,i) => {
+    $('.events div').eq(i).on(e, function (e) {
+        this.innerText = `
+    evento:${e.type}
+    clase:${this.className}
+    usted hizo ${e.type} sobre el div con calse ${this.className} 
+    `
+    });
+});
+</script>

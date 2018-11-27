@@ -1,0 +1,36 @@
+
+<style>
+   .aaa{
+       height: 200px;
+       background: gray
+   }
+</style>
+
+<div class="ui grid container">
+  <div class="ui sixteen wide column  aaa" id="myAjaxExample"></div>
+  <div class="ui sixteen wide column centered">
+        <button class="ui button red" id="btn-example">solicitar</button> 
+  </div>
+
+
+</div>
+
+<script>
+
+document.getElementById('btn-example').addEventListener('click',function(){
+
+ var req=new XMLHttpRequest();
+
+ req.onreadystatechange=function(){
+    if (this.readyState===4 && this.status===200){
+         
+       let myAjaxExample= document.getElementById('myAjaxExample');
+       myAjaxExample.innerHTML='';
+       myAjaxExample.innerHTML=this.responseText; 
+          
+    }
+ }
+ req.open('get','/ajaxExample/ejemplo del objeto XMLHttpRequest');
+ req.send();
+});
+</script>
