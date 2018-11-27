@@ -1,1 +1,1 @@
-web: npm start
+web: node ./Api/server.js
