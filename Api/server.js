@@ -91,14 +91,14 @@ server.register(plugins, function (err) {
 		throw err;
 	}
 
-	server.views({
+/* 	server.views({
 
 		engines: { html:handlebars},
 		layout: true,
 		path: Path.join(__dirname, '../views'),
 		layoutPath: Path.join(__dirname, '../views/default/'),//setting Global Layout,
-//		partialsPath: Path.join(__dirname, '../views/default/partial/') //partial Views
-	});
+		partialsPath: Path.join(__dirname, '../views/default/partial/') //partial Views
+	}); */
 
 	/**
 	 * Default route
