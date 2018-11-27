@@ -35,7 +35,7 @@ const pool = new sql.ConnectionPool(config).connect();
 
 console.log(Path.join(__dirname, '../views'));
 console.log(Path.join(__dirname, '../views/default/'));
-console.log(Path.join(__dirname, '../views/default/partial/');
+console.log(Path.join(__dirname, '../views/default/partial/'));
 
 /**
  * Lets the server run on this Host and Port
