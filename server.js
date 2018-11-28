@@ -63,54 +63,54 @@ server.register(require('inert'), function (err) {
 });
 
 
-/**=
- * Register all Modules as Plugins Here
- * 
- */
+// /**=
+//  * Register all Modules as Plugins Here
+//  * 
+//  */
 
-var plugins = [
+// var plugins = [
 
-	{ register: require('vision') }, //register Vision with others Plugins
-	{ register: require('./modules/contact.js') },
-	{ register: require('./modules/event.js') },
-	//{ register: require('./modules/query.js') },
-	{ register: require('./modules/login.js') },
-	{ register: require('./modules/ajaxExample.js') },
-	{ register: require('./modules/calculadora.js') }
+// 	{ register: require('vision') }, //register Vision with others Plugins
+// 	{ register: require('./modules/contact.js') },
+// 	{ register: require('./modules/event.js') },
+// 	//{ register: require('./modules/query.js') },
+// 	{ register: require('./modules/login.js') },
+// 	{ register: require('./modules/ajaxExample.js') },
+// 	{ register: require('./modules/calculadora.js') }
 
-];
+// ];
 
 
-/**
- * Routing Views
- 
-server.register(plugins, function (err) {
+// /**
+//  * Routing Views
+//  */
+// server.register(plugins, function (err) {
 
-	if (err) {
-		throw err;
+// 	if (err) {
+// 		throw err;
+// 	}
+
+// 	server.views({
+
+// 		engines: { html:handlebars},
+// 		layout: true,
+// 		path: Path.join(__dirname, './views'),
+// 		layoutPath: Path.join(__dirname, './views/default/'),//setting Global Layout,
+// 	//	partialsPath: Path.join(__dirname, './views/default/partial/') //partial Views
+// 	});
+
+// 	/**
+// 	 * Default route
+// 	 */
+
+// });
+
+server.route({
+	method: 'GET', path: '/', handler: function (request, reply) {
+	//	reply.view('home', { title: 'Home' });
+	reply('probando').code(200);
 	}
-
-	server.views({
-
-		engines: { html:handlebars},
-		layout: true,
-		path: Path.join(__dirname, './views'),
-		layoutPath: Path.join(__dirname, './views/default/'),//setting Global Layout,
-	//	partialsPath: Path.join(__dirname, './views/default/partial/') //partial Views
-	});
-
-	/**
-	 * Default route
-	 */
-	server.route({
-		method: 'GET', path: '/', handler: function (request, reply) {
-		//	reply.view('home', { title: 'Home' });
-		reply('probando').code(200);
-		}
-	});
 });
-
-
 
 
 /**
