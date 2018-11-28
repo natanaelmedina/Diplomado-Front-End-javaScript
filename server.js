@@ -37,7 +37,7 @@ const handlebars=require('handlebars');
 /**
  * Lets the server run on this Host and Port
  */
-server.connection({ host: '127.0.0.1', port: ~~process.env.PORT || 9096 });
+server.connection({ host: '127.0.0.1', port:process.env.PORT || 8001 });
 
 
 /**
