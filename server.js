@@ -29,18 +29,15 @@ const Hapi = require('hapi');
 const server = new Hapi.Server();
 const Good = require('good');
 const handlebars=require('handlebars');
-const sql = require('mssql');
-const config = require('./config/config.js').config;
-const pool = new sql.ConnectionPool(config).connect();
-
+//const sql = require('mssql');
+//const config = require('./config/config.js').config;
+//const pool = new sql.ConnectionPool(config).connect();
 
 
 /**
  * Lets the server run on this Host and Port
  */
 server.connection({ host: '127.0.0.1', port: process.env.PORT || 9096 });
-
-console.log(Path.join(__dirname, '../../views'))
 
 
 /**
@@ -76,7 +73,7 @@ var plugins = [
 	{ register: require('vision') }, //register Vision with others Plugins
 	{ register: require('./modules/contact.js') },
 	{ register: require('./modules/event.js') },
-	{ register: require('./modules/query.js') },
+	//{ register: require('./modules/query.js') },
 	{ register: require('./modules/login.js') },
 	{ register: require('./modules/ajaxExample.js') },
 	{ register: require('./modules/calculadora.js') }
@@ -107,8 +104,8 @@ server.register(plugins, function (err) {
 	 */
 	server.route({
 		method: 'GET', path: '/', handler: function (request, reply) {
-			reply.view('home', { title: 'Home' });
-
+		//	reply.view('home', { title: 'Home' });
+		reply('probando').code(200);
 		}
 	});
 });
@@ -119,6 +116,7 @@ server.register(plugins, function (err) {
 /**
  * running Http Node Server with Good Plugins for Logging  
  */
+/**
 server.register({
 
 	register: Good,
@@ -141,14 +139,20 @@ server.register({
 		throw error;
 	}
 
-	/**
-	 * Starting Server
-	 */
+	
+	 // Starting Server
+	
 	server.start(function () {
 
 		console.log("Server running on", server.info.uri);
 	});
 
 });
+ */
 
+server.start(function () {
+	console.log("Server running on", server.info.uri);
+});
+
+let sql=0,pool=0,config=0;
 module.exports = {sql,pool,config,handlebars}
