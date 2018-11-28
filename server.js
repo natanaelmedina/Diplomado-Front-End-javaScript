@@ -99,7 +99,7 @@ server.register(plugins, function (err) {
 		layout: true,
 		path: Path.join(__dirname, './views'),
 		layoutPath: Path.join(__dirname, './views/default/'),//setting Global Layout,
-		partialsPath: Path.join(__dirname, './views/default/partial/') //partial Views
+	//	partialsPath: Path.join(__dirname, './views/default/partial/') //partial Views
 	});
 
 	/**
