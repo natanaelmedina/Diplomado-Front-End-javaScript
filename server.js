@@ -26,7 +26,10 @@ compileSass.compileSassAndSaveMultiple({
 
 */
 const Hapi = require('hapi');
-const server = new Hapi.Server();
+const server=Hapi.server({
+    host:'localhost',
+    port:process.env.PORT || 8001
+});
 const Good = require('good');
 const handlebars=require('handlebars');
 //const sql = require('mssql');
@@ -35,32 +38,23 @@ const handlebars=require('handlebars');
 
 
 /**
- * Lets the server run on this Host and Port
- */
-server.connection({ host: '127.0.0.1', port:process.env.PORT || 8001 });
-
-
-/**
  * Routing Static Pages [JS, Css, Images, etc]
  */
-server.register(require('inert'), function (err) {
+// server.register(require('inert'),err=> {
+// 	if (err) {
+// 		throw err;
+// 	}
+// 	server.route({
+// 		method: 'GET', path: '/public/{path*}', handler: {
+// 			directory: {
+// 				path: './public',
+// 				listing: false,
+// 				index: false
+// 			}
+// 		}
+// 	});
 
-	if (err) {
-
-		throw err;
-	}
-
-	server.route({
-		method: 'GET', path: '/public/{path*}', handler: {
-			directory: {
-				path: './public',
-				listing: false,
-				index: false
-			}
-		}
-	});
-
-});
+// });
 
 
 // /**=
@@ -106,9 +100,9 @@ server.register(require('inert'), function (err) {
 // });
 
 server.route({
-	method: 'GET', path: '/', handler: function (request, reply) {
+	method: 'GET', path: '/', handler: function (request, h) {
 	//	reply.view('home', { title: 'Home' });
-	reply('probando').code(200);
+	return {status:'ok'}
 	}
 });
 
@@ -150,9 +144,19 @@ server.register({
 });
  */
 
-server.start(function () {
-	console.log("Server running on", server.info.uri);
+const init = async () => {
+
+    await server.start();
+    console.log(`Server running at: ${server.info.uri}`);
+};
+
+process.on('unhandledRejection', (err) => {
+
+    console.log(err);
+    process.exit(1);
 });
+
+init();
 
 let sql=0,pool=0,config=0;
 module.exports = {sql,pool,config,handlebars}
