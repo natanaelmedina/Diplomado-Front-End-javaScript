@@ -26,7 +26,7 @@ compileSass.compileSassAndSaveMultiple({
 
 */
 const Hapi = require('hapi');
-const server = new Hapi.Server();
+const server = new Hapi.Server(~~process.env.PORT || 3000, '0.0.0.0');
 const Good = require('good');
 const handlebars=require('handlebars');
 //const sql = require('mssql');
@@ -37,7 +37,7 @@ const handlebars=require('handlebars');
 /**
  * Lets the server run on this Host and Port
  */
-server.connection({ host: '127.0.0.1', port: process.env.PORT || 9096 });
+//server.connection({ host: '127.0.0.1', port: process.env.PORT || 9096 });
 
 
 /**
@@ -83,7 +83,7 @@ var plugins = [
 
 /**
  * Routing Views
- */
+ 
 server.register(plugins, function (err) {
 
 	if (err) {
