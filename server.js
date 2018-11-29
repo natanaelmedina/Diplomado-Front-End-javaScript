@@ -4,7 +4,7 @@ const server = Hapi.server({
 	port: +process.env.PORT || 3000,
 	host: 'localhost'
 });
-const {compilar} = require('./build.js');
+//const {compilar} = require('./build.js');
 
 const Path = require('path');
 
