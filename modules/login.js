@@ -4,50 +4,44 @@
 /**
  * Register Plugins
  */
-exports.register = function(server, options, next) {
-	
-	server.route([
-		
-		{
-			method : 'GET',
-			path : '/login',
-			handler : function(request, reply) {
-				reply.view('login/login', {title:'login'})
-			}
-		},
-		{
-			method : 'GET',
-			path : '/login/body',
-			handler : function(request, reply) {
-				reply.view('login/loginModal', {title:'login'},{ layout:false})
-				
-			}
-		},
-		{
-			method : 'POST',
-			path : '/login',
-			handler : function(request, reply) {
-			if ( request.payload.title===''|| request.payload.autor==='' || request.payload.Descripción===''){
-			reply({message:'Error:complete los datos'}).code(406)
-			}else
-			  reply({message:'datos de contacto enviado correctamente'});
-			   	
-			}
-		}
-		
-		
-		
-	]);
-	
-	next();
-};
+'use strict';
 
-/**
- * Plugin attributes...
- * we have here the Name and the Version of the plugin
- */
-exports.register.attributes = {
-	
-	name : 'login',
-	version : '1.0.0'	
-};
+exports.plugin = {
+	name: 'login',
+	version: '1.0.0',
+	register: async function (server, options) {
+
+		server.route([
+
+			{
+				method: 'GET',
+				path: '/login',
+				handler: function (request, reply) {
+					return reply.view('login/login', { title: 'login' })
+				}
+			},
+			{
+				method: 'GET',
+				path: '/login/body',
+				handler: function (request, reply) {
+					return reply.view('login/loginModal', { title: 'login' }, { layout: false })
+
+				}
+			},
+			{
+				method: 'POST',
+				path: '/login',
+				handler: function (request, reply) {
+					if (request.payload.title === '' || request.payload.autor === '' || request.payload.Descripción === '') {
+						return reply({ message: 'Error:complete los datos' }).code(406)
+					} else
+						return reply({ message: 'datos de contacto enviado correctamente' });
+
+				}
+			}
+
+
+
+		]);
+	}
+}
