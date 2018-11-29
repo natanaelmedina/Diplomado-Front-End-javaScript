@@ -2,10 +2,10 @@
 module.exports = { 
      config : {
     user: 'sa',
-    password: 'iK2020',
-    server:'remaxrd.me', //`USB\\SQLNATA`,
+    password: '123456',
+    server:'localhost', //`USB\\SQLNATA`,
     port: 14335,
-    database: 'MaxMonitor',
+    database: 'deRemate',
     pool: {
       max: 10000,
       min: 0,
