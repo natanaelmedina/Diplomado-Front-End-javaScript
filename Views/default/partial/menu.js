@@ -54,7 +54,7 @@ $('a[href="/login"]').on('click', function (e) {
     if ($('.login-form').length > 0) {
         showLogin()
     } else
-        $.get('http://localhost:9095/login/body').done(function (data) {
+        $.get('login/body').done(function (data) {
             showLogin(data)
         });
 
