@@ -13,7 +13,7 @@ const Path = require('path');
  */
 
 (async () => {
-	compilar() 
+	//compilar() 
 	await server.register(require('inert'));
 	server.route({
 		method: 'GET',
