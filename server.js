@@ -1,15 +1,19 @@
+
 const Hapi = require('hapi');
 const server = Hapi.server({
-	port: process.env.PORT || 3000,
+	port: +process.env.PORT || 3000,
 	host: 'localhost'
 });
+const {compilar} = require('./build.js');
 
 const Path = require('path');
 
 /**
  * Routing Static Pages [JS, Css, Images, etc]
  */
+
 (async () => {
+	compilar() 
 	await server.register(require('inert'));
 	server.route({
 		method: 'GET',
@@ -104,4 +108,11 @@ const Path = require('path');
 	 */
 	await server.start();
 	console.log(`Server running at: ${server.info.uri}`);
+
+	process.on('unhandledRejection', (err) => {
+
+		console.log(err);
+		process.exit(1);
+	});
+	
 })()
