@@ -26,9 +26,9 @@ exports.plugin  = {
 				path: '/contacto',
 				handler: function (request, reply) {
 					if (request.payload.title === '' || request.payload.autor === '' || request.payload.Descripción === '') {
-						return	reply({ message: 'Error:complete los datos' }).code(406)
+						return	{ message: 'Error:complete los datos' }
 					} else
-					return	reply({ message: 'datos de contacto enviado correctamente' });
+					return { message: 'datos de contacto enviado correctamente' }
 
 				}
 			}

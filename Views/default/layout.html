@@ -6,26 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>natanael web app</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="public/css/style.css" />
+     
     <link rel="stylesheet" href="public/css/ui-alert.css">
     <link rel="stylesheet" href="public/Semantic-UI/semantic.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="public/css/style.css" />
+
     <script src="public/Semantic-UI/Jquery.js"></script>
     <script src="public/Semantic-UI/semantic.min.js"></script>
     <script src="public/js/ui-alert.js"></script>
+
+    
+    <link href="public/filepond/dist/filepond.css" rel="stylesheet">
+    <link href="public/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+
+
+    <script src="public/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="public/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+    <script src="public/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="public/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="public/filepond/dist/filepond.js"></script>
 </head>
 
 <body>
+
     <div class="ui active inverted dimmer hidden transition hidden">
         <div class="ui text loader">Loading</div>
     </div>
     <div id="root">
         {{>navigator}}
         <main>
-         {{{content}}}
+            {{{content}}}
         </main>
-        <footer> © 2018 Copyright:<a href="#">By Natanael Medina</a></footer>
+        <!-- <footer> © 2018 Copyright:<a href="#">By Natanael Medina</a></footer> -->
     </div>
     <script src="public/js/main.bundle.js"></script>
+    <script>
+        FilePond.registerPlugin(FilePondPluginImagePreview)
+    </script>
+
 </body>
 
 </html>

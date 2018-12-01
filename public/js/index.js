@@ -2,8 +2,10 @@
 import "../../Views/contact/contact.js";
 import "../../Views/login/login.js";
 import "../../Views/default/partial/menu.js";
+
 $(document)
   .ready(function () {
+
     /*
         // fix main menu to page on passing
         $('.main.menu').visibility({

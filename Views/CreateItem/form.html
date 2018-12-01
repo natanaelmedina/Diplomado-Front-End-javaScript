@@ -1,0 +1,190 @@
+<div class="ui container creteItem">
+    <div class="html ui top attached segment">
+        <div class="ui top attached label">
+            Publicar artículo
+            <i data-content="Copy code" class="copy link icon"></i>
+        </div>
+        <form class="ui form ">
+            <div class="field">
+                <label>Título</label>
+                <input type="text" name="titulo">
+            </div>
+            <div class="field">
+                <label>Categoría</label>
+                <select class="ui fluid search dropdown" name="categoria">
+                    <option value="">State</option>
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                </select>
+            </div>
+
+            <div class="three fields">
+                <div class="field">
+                    <label>Condición</label>
+                    <select class="ui fluid search dropdown" name="condicion">
+                        <option value="">Nuevo</option>
+                        <option value="AL">Usado</option>
+                        <option value="AK">Reformado</option>
+                        <option value="AK">Para piezas</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Precio</label>
+                    <input type="text" name="precio">
+                </div>
+                <div class="field">
+                    <label>Moneda</label>
+                    <select class="ui fluid search dropdown" name="moneda">
+                        <option value="$RD">$RD Pesos</option>
+                        <option value="$US">$US Dolar</option>
+                        <option value="AK">Eueros</option>
+                        <option value="AK"></option>Yuanes</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label>Descipción</label>
+                <textarea name="descripcion"></textarea>
+            </div>
+            <div class="field">
+                <label>Subir imagen</label>
+                <input type="file" class="filepond" name="filepond" multiple data-max-file-size="3MB" data-max-files="10"
+                    accept="image/png, image/jpeg, image/gif">
+            </div>
+
+            <div class="html ui top attached segment">
+                <div class="ui top attached label">
+                    Mi perfil
+                    <i data-content="Copy code" class="copy link icon"></i>
+                </div>
+                <img src="public/img/paragraph.png" class="ui wireframe image">
+            </div>
+            <div class="ui divider"></div>
+            <div class="ui primary submit button">Publicar</div>
+            <div class="ui cancel button">Regresar</div>
+            <div class="ui error message"></div>
+        </form>
+
+    </div>
+    <script>
+        $(document)
+            .ready(function () {
+
+                $('.creteItem .search.dropdown')
+                    .dropdown({
+                        clearable: true,
+                        placeholder: 'Seleccione una categoria'
+                    });
+
+            });
+
+        FilePond.registerPlugin(
+            FilePondPluginImagePreview,
+            FilePondPluginImageExifOrientation,
+            FilePondPluginFileValidateSize
+        );
+        var Upload = FilePond.create(
+            document.querySelector('input[type=file]'),
+            {
+                labelIdle: `Arrastra y suelta tus imagenes aquí  o <span class="filepond--label-action">Buscar</span>`
+            }
+
+        );
+        Upload.setOptions({
+            server: {
+                process: function (fieldName, file, metadata, load, error, progress, abort) {
+                    var formData = new FormData();
+                    formData.append('file', file, file.name);
+                    formData.append('name', file.name);
+                    formData.append('type', file.type);
+                    $.ajax({
+                        method: "POST",
+                        url: "/createItem",
+                        data: formData,
+                        cache: false,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        xhr: function () {
+                            var xhr = $.ajaxSettings.xhr();
+                            xhr.upload.onprogress = function (e) {
+                                progress(e.lengthComputable, e.loaded, e.total);
+                            };
+                            return xhr;
+                        }
+                    }).done(function (e) {
+                        load(e);
+                    }).fail(function (e) {
+                        error(e);
+                    });
+
+                },
+                revert: './createItem',
+            }
+        });
+
+        $('.creteItem form')
+            .form({
+                fields: {
+                    titulo: {
+                        identifier: 'titulo',
+                        rules: [{ type: 'empty', prompt: 'El {name} es obligatorio' }]
+                    },
+                    categoria: {
+                        identifier: 'categoria',
+                        rules: [{ type: 'empty', prompt: 'Seleccione una {name}' }]
+                    },
+                    condicion: {
+                        identifier: 'condicion',
+                        rules: [{ type: 'empty', prompt: 'Seleccione la {name} del aritculo' }]
+                    },
+                    precio: {
+                        identifier: 'precio',
+                        rules: [{ type: 'empty', prompt: 'digite un {name} para el articulo' }]
+                    },
+                    moneda: {
+                        identifier: 'moneda',
+                        rules: [{ type: 'empty', prompt: 'Seleccione una {name}' }]
+                    },
+                    filepond: {
+                        identifier: 'filepond',
+                        rules: [{ type: 'file', prompt: 'debe subir almenos una imagen' }]
+                    }
+                }
+            });
+        $('form .submit').on('click', function (e) {
+      
+            e.preventDefault();
+            
+            $('.creteItem form').form('validate form');
+
+            if ($('.creteItem form').form('is valid')) {
+                var values=$('.creteItem form').form('get values');
+                var formData = new FormData();
+                Object.keys(values).forEach(function(v,i){ 
+                    formData.append(v,Object.values(values)[i])
+                });
+                
+                $.ajax({
+                    method: "POST",
+                    url: "/createItem/08923828392894829384293",
+                    data: formData,
+                    cache: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    xhr: function () {
+                        var xhr = $.ajaxSettings.xhr();
+                        xhr.upload.onprogress = function (e) {
+                            // progress(e.lengthComputable, e.loaded, e.total);
+                        };
+                        return xhr;
+                    }
+                }).done(function (e) {
+                    load(e);
+                }).fail(function (e) {
+                    error(e);
+                });
+            }
+        });
+    </script>

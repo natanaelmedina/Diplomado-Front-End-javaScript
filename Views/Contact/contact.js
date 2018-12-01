@@ -3,7 +3,7 @@
  * logica modulo contact client side
  * 22-11-2018
  */
-debugger;
+
 $('.contact .ui.form')
     .form({
         fields: {

@@ -27,11 +27,11 @@ exports.plugin  = {
                 method: 'GET',
                 path: '/ajaxExample/{get}',
                 handler: async function (request, reply) {
-                    return   reply(`<p style="color:#fff;">
+                    return  `<p style="color:#fff;">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio vel debitis sed neque, quis ab molestias assumenda. 
                 Nam commodi neque, accusantium architecto soluta voluptatem quisquam, veritatis cumque corporis deleniti saepe!
-                ruta : ${request.params.get}
-                </p>`).code(200)
+               
+                </p>`
                 }
             },
             {

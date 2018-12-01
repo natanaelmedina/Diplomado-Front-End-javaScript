@@ -24,6 +24,13 @@
   "homepage": "https://github.com/natanaelmedina/Diplomado-Front-End-javaScript#readme",
   "dependencies": {
     "babel": "^6.23.0",
+    "delete": "^1.1.0",
+    "file-type": "^10.5.0",
+    "filepond": "^3.3.3",
+    "filepond-plugin-file-validate-size": "^2.0.0",
+    "filepond-plugin-file-validate-type": "^1.2.0",
+    "filepond-plugin-image-exif-orientation": "^1.0.3",
+    "filepond-plugin-image-preview": "^3.1.4",
     "fs": "0.0.1-security",
     "good": "^8.1.1",
     "good-console": "^7.1.0",
@@ -32,6 +39,8 @@
     "handlebars": "^4.0.12",
     "hapi": "^17.8.1",
     "inert": "^5.1.2",
+    "moment": "^2.22.2",
+    "save-file": "^2.1.1",
     "vision": "^5.4.3",
     "webpack": "^4.26.1"
   },

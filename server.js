@@ -1,10 +1,10 @@
 
 const Hapi = require('hapi');
 const server = Hapi.server({
-	port: +process.env.PORT || 3000,
+	port: process.env.PORT || 81,
 	host: 'localhost'
 });
-//const {compilar} = require('./build.js');
+const {compilar} = require('./build.js');
 
 const Path = require('path');
 
@@ -13,7 +13,7 @@ const Path = require('path');
  */
 
 (async () => {
-	//compilar() 
+	compilar() 
 	await server.register(require('inert'));
 	server.route({
 		method: 'GET',
@@ -39,7 +39,9 @@ const Path = require('path');
 		require('./modules/contact.js'),
 		require('./modules/event.js'),
 		require('./modules/query.js'),
-		require('./modules/login.js')
+		require('./modules/login.js'),
+		require('./modules/createItem.js')
+		
 
 	];
 
@@ -86,9 +88,6 @@ const Path = require('path');
 			}, {
 				module: 'good-squeeze',
 				name: 'SafeJson'
-			}, {
-				module: 'good-file',
-				args: ['./test/fixtures/awesome_log']
 			}],
 			myHTTPReporter: [{
 				module: 'good-squeeze',

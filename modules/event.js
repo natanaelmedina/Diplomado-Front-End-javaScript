@@ -18,14 +18,14 @@ exports.plugin  = {
 				path: '/eventos',
 				handler: function (request, reply) {
 
-					reply.view('eventos', { title: 'eventos' });
+				return	reply.view('eventos', { title: 'eventos' });
 				}
 			},
 			{
 				method: 'POST',
 				path: '/eventos',
 				handler: function (request, reply) {
-
+                    return {}
 				}
 			}
 

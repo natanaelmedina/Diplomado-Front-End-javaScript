@@ -4,8 +4,10 @@ $clWhite:#fff;
 $clnavy:navy;
 $fondo:linear-gradient(to right, #fbfbfb, #fafcff) !important;
 
+@import  './createItem.scss';
 
 body{
+
   background:$fondo;
   min-height: 100% !important;
 
@@ -30,7 +32,7 @@ body{
     }
   }
   #root{
-    padding-top: 54px;
+    padding: 100px 0 100px;
   }
 
 
